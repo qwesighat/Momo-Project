@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
 void momoPrompt(){
 
 	int menuOption;
@@ -12,6 +12,7 @@ void momoPrompt(){
 	int pin;
 	int count;
 	
+	// Main menu options after dialing your short code.
 		cout << "Menu"<<endl;
 		cout << "1) Transfer Money"<<endl;
 		cout << "2) MoMoPay & Pay Bill"<<endl;
@@ -25,9 +26,10 @@ void momoPrompt(){
 	cin>>menuOption;
 	system("cls");
 	switch (menuOption){
+		// How to send money to someone
 		case 1:
 		cout << "Transfer Money"<<endl;
-		cout << "1) MoMO User"<<endl;
+		cout << "1) MoMo User"<<endl;
 		cout << "2) Non MoMo User"<<endl;
 		cout << "3) Send with Care"<<endl;
 		cout << "4) Favorite"<<endl;
@@ -47,7 +49,7 @@ void momoPrompt(){
 			cin>>confirmNumber;
 				system("cls");
 		
-		 if (mobileNumber.length() < 10){
+		 if (mobileNumber.length() !=10){
 			cout<<"Invalid Number"<<endl;
 		}
 			
@@ -62,14 +64,26 @@ void momoPrompt(){
 			
 			cout<<"Enter Reference Number: "<<endl;
 			cin>>referenceNumber;
+				system("cls");
 			
 			cout<<"Transfer to - Assa Godfred Takyi "<<mobileNumber<<" for GHS"<<amount<<" with Reference number: "<<referenceNumber<<"."<<" Fee is GHS 0.50 , Tax amount is GHS 0.10"<<endl;
+			cout<<"Enter your MoMo pin: "<<endl;
+			cin>>pin;
+				system("cls");
+			if (pin == 0000){
+			cout<<"You have sent "<<amount<<" to - Assa Godfred Takyi"<<mobileNumber<<" Fee: GHS 0.50. Tax: GHS 0.50. Messesage - Your balance is GHS33.62"<<endl;	
+			}
+			else {
+					cout<<"Incorrect Mobile Money PIN"<<endl;
+				}	
+			
+					
 		}
 		
 			
 		}
 		break;
-		
+		// Cheking balance
 		case 6:
 		cout << "My Wallet"<<endl;
 		cout << "1) Check Balance"<<endl;
@@ -90,14 +104,14 @@ void momoPrompt(){
 			cin>>pin;
 			system("cls");
 			
-			if (pin == 1111){
+			if (pin == 0000){
 				cout<<"Current Balance: GHS 1000.00, Available Balance: GHS 1000.00"<<endl;
 				}
 				else {
 					cout<<"Incorrect Mobile Money PIN"<<endl;
 				}
 				count++;
-			} while(pin != 1111 && count < 3);
+			} while(pin != 0000 && count < 3);
 				
 		} else if (menuOption == 6){
 			cout<<"Change & Reset PIN"<<endl;
@@ -132,6 +146,7 @@ int main(int argc, char** argv)
 	cin>>shortcode;
 	system("cls");
 	
+	// Authentication
 	if(shortcode == "*170#"){
 	do {
 	momoPrompt();
